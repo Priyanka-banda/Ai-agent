@@ -1,66 +1,115 @@
-# Ai-agent
-first mini project
-🛠 What You Need To Do
-1️⃣ Update Your Launch Code (IMPORTANT)
+# 🤖 AI Agent – Browser Automation Project
 
-Change:
+🌤️ Want to skip the setup? Use cloud for faster, scalable, stealth-enabled browser automation!
 
-demo.queue().launch(server_name=args.ip, server_port=args.port)
+---
 
-To:
+## 🤖 LLM Quickstart
 
-demo.queue().launch(server_name="0.0.0.0", server_port=10000)
+Direct your favorite coding agent (Cursor, Claude Code, etc.) to `Agents.md`  
+Prompt away!
 
-Cloud services require:
+---
 
-0.0.0.0
+## 👋 Human Quickstart
 
-fixed port (usually 10000)
+### 1️⃣ Create environment and install Browser-Use (Python >= 3.11)
 
-2️⃣ Add requirements.txt
+```bash
+uv init && uv add browser-use && uv sync
+# uvx browser-use install  # Run if you don't have Chromium installed
+```
 
-In VS Code terminal:
+---
 
-pip freeze > requirements.txt
+### 2️⃣ (Optional) Add API Keys
 
-Push to GitHub.
+Create a `.env` file:
 
-3️⃣ Add README Preview Section
+```env
+BROWSER_USE_API_KEY=your-key
+GOOGLE_API_KEY=your-key
+ANTHROPIC_API_KEY=your-key
+```
 
-Example:
+---
+
+### 3️⃣ Run Your First Agent
+
+```python
+from browser_use import Agent, Browser, ChatBrowserUse
+# from browser_use import ChatGoogle  # ChatGoogle(model='gemini-3-flash-preview')
+# from browser_use import ChatAnthropic  # ChatAnthropic(model='claude-sonnet-4-6')
+import asyncio
+
+async def main():
+    browser = Browser(
+        # use_cloud=True,  # Use a stealth browser on Browser Use Cloud
+    )
+
+    agent = Agent(
+        task="Find the number of stars of the browser-use repo",
+        llm=ChatBrowserUse(),
+        # llm=ChatGoogle(model='gemini-3-flash-preview'),
+        # llm=ChatAnthropic(model='claude-sonnet-4-6'),
+        browser=browser,
+    )
+
+    await agent.run()
+
+if __name__ == "__main__":
+    asyncio.run(main())
+```
+
+---
 
 ## 🚀 Live Demo
-👉 https://your-app.onrender.com
+
+👉 Add your deployed link here  
+Example:
+
+```
+https://your-app.onrender.com
+```
+
+---
 
 ## 📸 Preview
+
+Add screenshot inside `images/preview.png`
+
+```markdown
 ![Preview](images/preview.png)
+```
 
-Take screenshot and upload inside repo.
+---
 
-💡 If You Want Quick Demo (Fastest Way)
+## 💡 Quick Public Demo (Temporary)
 
-Modify your script:
-
+```python
 demo.queue().launch(share=True)
+```
 
 Run:
 
+```bash
 python webui.py
+```
 
-It will generate:
+It will generate a temporary public link like:
 
+```
 https://xxxxx.gradio.live
+```
 
-You can put that link in README.
+---
 
-⚠️ But it expires after some hours.
+## 🧠 Project Description
 
-🧠 Professional Portfolio Tip
+🤖 AI Browser Automation Agent  
+Built using Browser-Use + LLM  
+Automates real-world web tasks using AI  
 
-In your README write:
+---
 
-🤖 AI Browser Automation Agent
-Built using Browser-Use + LLM
-Automates real-world web tasks using AI
-
-That looks very strong for resume.
+⭐ If you like this project, give it a star!
